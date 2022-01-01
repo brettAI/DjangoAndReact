@@ -129,7 +129,7 @@ After creating the model and a serializer, used the Django shell to confirm the 
 
 This new record can be seen in the Django Admin website.
 
-# Up to 1:25:53
+# Up to 2:07:03
 
 [1]: https://www.youtube.com/watch?v=VBqJ0-imSMU 'Django & ReactJS Full Stack Course'
 [2]: https://code.visualstudio.com/ 'Visual Studio Code'
