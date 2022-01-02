@@ -13,6 +13,10 @@ from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
 
 # Create your views here.
 
@@ -202,3 +206,26 @@ class ArticleDetails(generics.GenericAPIView, mixins.RetrieveModelMixin,
     
     def delete(self, request, id):
         return self.destroy(request, id=id)
+
+
+# Using the GenericViewSet
+class ArticleViewSetGeneric(viewsets.GenericViewSet, mixins.ListModelMixin, 
+            mixins.CreateModelMixin,
+            mixins.RetrieveModelMixin,
+            mixins.UpdateModelMixin,
+            mixins.DestroyModelMixin):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+#Using the ModuleViewSet
+class ArticleViewSetModel(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication,)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    

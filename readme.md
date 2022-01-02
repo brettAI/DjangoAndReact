@@ -129,7 +129,24 @@ After creating the model and a serializer, used the Django shell to confirm the 
 
 This new record can be seen in the Django Admin website.
 
-# Up to 2:07:03
+
+## Token Authentication
+
+Added token based Authentication with the rest_framework.authtoken. Once added, need to update the database with a new migration:
+
+``` ps1
+    cd APIProject
+    python manage.py migrate
+```
+
+After refreshing the Django Admin page, a new 'Tokens' section appears. A simple token can be created manually by the Django Admin function.
+
+This can be tested via Postman.
+To the http://localhost:8000/auth/ folder, do a POST and include Body -> form-data that includes a 'username' and 'password'. Once posted, it will return the token created within Django for that user.
+
+The Token can be added to the Headers within Postman.
+
+# Up to 2:46:24
 
 [1]: https://www.youtube.com/watch?v=VBqJ0-imSMU 'Django & ReactJS Full Stack Course'
 [2]: https://code.visualstudio.com/ 'Visual Studio Code'
