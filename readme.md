@@ -9,7 +9,8 @@ This project was built using:
 - [Django (v 4.0)][4]
 - [Django REST framework (v 3.13.1)][5]
 - Javascript
-- ReactJS
+- [NodeJS][6]
+- [ReactJS][7]
 - [Postman][8]
 
 ## Environment setup
@@ -146,11 +147,105 @@ To the http://localhost:8000/auth/ folder, do a POST and include Body -> form-da
 
 The Token can be added to the Headers within Postman.
 
-# Up to 2:46:24
+## Front-end
+Attempted this in the same project.  For a real project, the front-end and the backend API project should be separate projects.
+
+### Create React Application
+
+First ensured [nodeJS][6] was installed.  Then from a command line:
+
+``` cmd
+    npx create-react-app my-app
+    cd my-app
+    npm start
+```
+Note: this opens a browser to the correct port for this new app.
+
+Installed Bootstrap:
+
+``` cmd
+    cd my-app
+    npm install bootstrap
+```
+
+then added to ```index.js```
+
+``` javascript
+    import 'bootstrap/dist/css/bootstrap.min.css'
+```
+
+Installed Visual Studio Code extension ES7 React/Redux/GraphQL/React-Native snippets
+
+Installed ```react-router-dom``` using the following:
+
+``` cmd
+    npm install react-router-dom
+```
+
+Installed ```axios``` to help get getting data:
+
+``` cmd
+    npm install axios
+```
+
+
+## CORS
+In order to handle the CORS error message need to install ```djando-cors-headers```
+
+``` cmd
+    pip install django-cors-headers
+```
+
+and then in the settings.py, Installed apps:
+
+``` python
+INSTALLED_APPS = [
+    ...
+    'corsheaders',
+    ...
+]
+```
+
+and then also add the appropriate CorsMiddleware
+
+``` python
+MIDDLEWARE = [
+    ...
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    ...
+]
+```
+
+and then add the whitelist
+
+``` python
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]
+```
+
+
+# Up to 5:37:13
+
+## Other random stuff
+
+### ReactJS Showcase and helpful modules
+
+[Sweet Alert](https://sweetalert.js.org/)
+
+
+
+
 
 [1]: https://www.youtube.com/watch?v=VBqJ0-imSMU 'Django & ReactJS Full Stack Course'
 [2]: https://code.visualstudio.com/ 'Visual Studio Code'
 [3]: https://www.python.org/ 'Python'
 [4]: https://www.djangoproject.com/ 'django'
 [5]: https://www.django-rest-framework.org/ 'Django Rest Framework'
+[6]: https://nodejs.org/en/ 'NodeJS'
+[7]: https://reactjs.org/ 'ReactJS'
 [8]: https://www.postman.com/downloads/ 'Postman'
